@@ -5,17 +5,23 @@
 # found at
 # UNData Live births by month of birth
 # https://data.un.org/Data.aspx?d=POP&f=tableCode:55
-#
+# by clicking "Download" as semicolon separated
+# need to manually add # characters to footnote lines
 #
 
 library(ggplot2)
 library(dplyr)
 library(gridExtra)
 
+
 # read data here
 #birthrate_file = "~/git/birth_rate_by_month/data/UNdata_Export_20210419_155726210.txt.gz"
-birthrate_file = "~/git/birth_rate_by_month/data/UNdata_Export_20230630_084956534.txt.gz"
+#birthrate_file = "~/git/birth_rate_by_month/data/UNdata_Export_20230630_084956534.txt.gz"
+birthrate_file = "~/git/birth_rate_by_month/data/UNdata_Export_20250419_103054264.txt.gz"
 birthdata = read.table(birthrate_file, header=TRUE, sep=";", stringsAsFactors = FALSE )
+
+#test_data = filter(birthdata, Country.or.Area=="Philippines")
+#aggregate(birthdata$Reliability, by=list(birthdata$Country.or.Area), table )
 
 summary(birthdata)
 
@@ -73,13 +79,16 @@ for (country in country_list){
     if (yearly_mean_range[2] > 100) {
         plot_list[[i]] = cgg
         #outputfilename = paste0("~/git/birth_rate_by_month/countries/", country_w_underscores, ".UNdata_20210419.pdf")
-        outputfilename = paste0("~/git/birth_rate_by_month/countries/", country_w_underscores, ".UNdata_20230630.png")
-        #ggsave(outputfilename, cgg, device="pdf", width=8, height=6)
+        #outputfilename = paste0("~/git/birth_rate_by_month/countries/", country_w_underscores, ".UNdata_20230630.pdf")
+        outputfilename = paste0("~/git/birth_rate_by_month/countries/", country_w_underscores, ".UNdata_20250419.pdf")
+        ggsave(outputfilename, cgg, device="pdf", width=8, height=6)
+        outputfilename = gsub("pdf","png", outputfilename)
         ggsave(outputfilename, cgg, device="png", width=8, height=6, dpi = 90)
     }
 } # end for loop
 
 #pdf("~/git/birth_rate_by_month/all_countries_tiled.UNdata_20210419.pdf", paper="a4", width=8, height=10)
+#pdf("~/git/birth_rate_by_month/all_countries_tiled.UNdata_20250419.pdf", paper="a4", width=8, height=10)
 #for (i in seq(1, length(plot_list), 6)) {
 #    grid.arrange(grobs=plot_list[i:(i+5)], ncol=2)
 #}
@@ -255,9 +264,9 @@ mo_yr_country_list = list()
 country_list = c( "China, Hong Kong SAR", "China, Macao SAR", "Japan", "Malaysia", 
                   "Philippines", "Republic of Korea", "Singapore" )
 
-country = "Japan"
+country = "Malaysia"
 print(country)
-country_final_only = filter(birthdata, Reliability == "Final figure, complete",
+country_final_only = filter(birthdata, Reliability %in% c("Final figure, complete","Provisional figure"),
                             Month %in% months,
                             Country.or.Area==country) %>%
   select( Country.or.Area, Month, Year, Value ) %>%
@@ -301,9 +310,9 @@ cgg = ggplot(country_final_only, aes(x=yearmonth_index,y=Value)) +
   #annotate( geom="text", x=unique(country_final_only$Year)+0.5, y=max(country_final_only$Value), label=zodiac_year, color=zodiac_color )
 
 country_w_underscores = gsub(",","",gsub(" ","_",country))
-outputfilename = paste0("~/git/birth_rate_by_month/images/", country_w_underscores, ".timeline.UNdata_20230630.pdf")
+outputfilename = paste0("~/git/birth_rate_by_month/images/", country_w_underscores, ".timeline.UNdata_20250419.pdf")
 print(outputfilename)
-#outputfilename = paste0("~/git/birth_rate_by_month/countries/", country_w_underscores, ".timeline.UNdata_20230630.png")
+#outputfilename = paste0("~/git/birth_rate_by_month/countries/", country_w_underscores, ".timeline.UNdata_20250419.png")
 #ggsave(outputfilename, cgg, device="pdf", width=12, height=6, family="Japan1")
 #ggsave(outputfilename, cgg, device="png", width=8, height=6, dpi = 90)
 cairo_pdf(filename = outputfilename, width=12, height=6, family="Arial Unicode MS")
@@ -345,6 +354,26 @@ ggplot(country_final_only, aes(x=match(Month,months),
        title=country, subtitle=subtitle_text,
        caption=caption_text) +
   geom_line(aes(x=mi%%12, colour=Year), alpha=0.3, size=3, lineend = "round")
+
+
+# P.W. LESLIE AND P.H. FRY (1989) Extreme Seasonality of Births Among Nomadic Turkana Pastoralists
+# https://pubmed.ncbi.nlm.nih.gov/2750875/
+# TABLE 1. Distributions of Ngisonyoka Turkana births and rainfall, by month
+leslie1989_text = "month	month_num	boy_births	girl_births	total	running_average	rainfall_mm
+January	1	9	9	18	15	11
+February	2	2	2	4	26	23
+March	3	25	31	56	39.7	42
+April	4	37	22	59	58	41
+May	5	31	28	59	58	40
+June	6	31	25	56	45.3	31
+July	7	13	8	21	41	33
+August	8	18	28	46	33.3	11
+September	9	22	11	33	37.7	23
+October	10	20	14	34	36.7	18
+November	11	18	25	43	33.3	19
+December	12	10	13	23	28	1
+sum	0	236	216	452	0	293"
+leslie1989_data = read.table(text=leslie1989_text, header=TRUE, sep="\t")
 
 
 
