@@ -1,8 +1,8 @@
 # Is there a seasonality to human births? #
 
-Many animals display a [seasonality to migration, mating, and birth](https://www.science.org/doi/10.1126/science.3881822), likely coinciding with weather, food availability, offspring survival, or predator abundance. Unsurprisingly, in humans, seasonality of birth is [associated with multiple metrics of birth outcome](https://doi.org/10.1073/pnas.1307582110), [weight at birth](https://doi.org/10.1111/j.1467-842X.1998.tb01467.x), [myopia](https://doi.org/10.1016/j.ophtha.2007.05.040), [risk of schizophrenia](https://doi.org/10.1192/bjp.167.6.783), [autism](https://doi.org/10.1176/ajp.152.5.798), and even [mortality](https://doi.org/10.1038/41245)/[lifespan](https://doi.org/10.1073/pnas.041431898).
+Many animals display a [seasonality to migration, mating, and birth](https://www.science.org/doi/10.1126/science.3881822), likely coinciding with weather, food availability, offspring survival, or predator abundance. Unsurprisingly, in humans, seasonality of birth is associated with multiple metrics of birth outcome [(Currie 2013)](https://doi.org/10.1073/pnas.1307582110), weight at birth [(Rousham 1998)](https://doi.org/10.1111/j.1467-842X.1998.tb01467.x), height [(Weber 1998)](https://doi.org/10.1038/35781) myopia [(Mandel 2008)](https://doi.org/10.1016/j.ophtha.2007.05.040), risk of schizophrenia [(Mcgrath 1995)](https://doi.org/10.1192/bjp.167.6.783), [autism (X 1995)](https://doi.org/10.1176/ajp.152.5.798), and even mortality [(Moore 1997](https://doi.org/10.1038/41245)/lifespan [(Doblhammer 2001)](https://doi.org/10.1073/pnas.041431898).
 
-Remarkably, this sounds a lot like [astrology](https://en.wikipedia.org/wiki/Western_astrology) or [horoscopes](https://en.wikipedia.org/wiki/Horoscope), which are [generally considered to be pseudoscience](https://en.wikipedia.org/wiki/Astrology_and_science). Of course, astrology contains plausible and implausible facets ([e.g. see commentary by Ball 2008](https://www.nature.com/articles/news.2008.731)). Given the above traits that are shown to be related to month of birth, perhaps a broader connection to personality, behaviour, development, or health is not unreasonable, while [vague daily fortunes](https://en.wikipedia.org/wiki/Barnum_effect) in the newspaper or fortune tellers may have no basis.
+Remarkably, this sounds a lot like [astrology](https://en.wikipedia.org/wiki/Western_astrology) or [horoscopes](https://en.wikipedia.org/wiki/Horoscope), which are [generally considered to be pseudoscience](https://en.wikipedia.org/wiki/Astrology_and_science). Of course, astrology contains plausible and implausible facets ([e.g. see commentary by Ball 2008](https://www.nature.com/articles/news.2008.731)). Given the above traits that are shown to be related to month of birth, perhaps a broader connection to personality, behaviour, development, or health is not unreasonable. However, [vague daily fortunes](https://en.wikipedia.org/wiki/Barnum_effect) in the newspaper or fortune tellers instead may have no historical basis.
 
 An obvious test for this would be whether the effect is mirrored across the equator, i.e. that those behaving like a capricorn in the southern hemisphere should instead be born in June-July, rather than December-January. This mirroring effect, for instance, is observed in the above refs [McGrath 1995](https://doi.org/10.1192/bjp.167.6.783), comparing UK to Australia, or [Doblhammer 2001](https://doi.org/10.1073/pnas.041431898), comparing Austria to Australia. More compelling evidence would be whether areas in the southern hemisphere had their own astrology or mythology that captured many of the same personality dimensions, but offset by 6 months. A difficulty here is the limited area in the southern hemisphere of temperate climates, mostly in South America (southern parts of Chile and Argentina). Large areas of both South Africa and Australia are subtropical deserts, historically unsupportive of large populations, so there may not be a detailed history of mythology or astrology from people there. Thus, the effect would then be whether migrants from the northern hemisphere show a mirrored pattern upon moving to South Africa, Australia, New Zealand, Chile or Argentina.
 
@@ -11,12 +11,13 @@ Plotted below are [monthly birth rates](https://data.un.org/Data.aspx?d=POP&f=ta
 ## Some general trends ##
 Click here for a [pdf of all countries](https://github.com/wrf/birth_rate_by_month/blob/main/all_countries_combined.UNdata_20210419.pdf) with data, and excluding a few that were completely noise, typically due to very low population/birth rate (less than 100 or so).
 
-Climate and temperature seem to have a strong effect: 
+Climate and temperature seem to have a strong effect, even across cultures or geopolitical regions. This was noted already in the 60s by [Takahashi 1964](https://pubmed.ncbi.nlm.nih.gov/14242746/).
 
-* Several countries have a very even distribution, including Ireland and the UK, which have temperate, oceanic climates. Other large temperate-climate countries, like USA or Japan, show a mostly even distribution, with a slight, but consistent, peak in autumn.
+* Several countries have a very even distribution, including Ireland and the UK, which have temperate, oceanic climates. Other large temperate-climate countries, like USA or Japan, show a mostly even distribution, with a slight, but consistent, peak in autumn. This may be a feature of the modern world, and also large country sizes that span several climate regions.
 * Many countries in Europe (and elsewhere) show a pattern with a July-September double peak, including Italy, Germany, Austria, Switzerland, Poland, and Slovakia, among others. 
+* Most Christian countries (e.g in Europe, Central Americas, Philippines) have a birth peak in September, like resulting from conceptions around Christmas time. 
 * The earlier parts of the timeseries show that most Nordic countries (Norway, Sweden, Denmark, Finland) formerly had an April peak, but that this is switching to the "European" pattern in modern times. This plausibly could be cultural, but also could be the result of warming or climate factors.
-* Tropical countries, like Cuba or Jamaica, have a trough in springtime (9 months offset from hot summer) and a peak in autumn. One theory relates this to [high temperatures in the summer time](https://doi.org/10.1016/j.envres.2011.01.023), hypothesized to affect [motility of sperm](https://www.jstor.org/stable/2061888) citing a single study of [only 56 patients](https://doi.org/10.1016/0028-2243(88)90140-2). That is, people aren't having less sex in the summer, just fewer pregnancies.
+* Tropical countries, like Cuba or Jamaica, have a trough in springtime (9 months offset from hot summer) and a peak in autumn. One theory relates this to [high temperatures in the summer time](https://doi.org/10.1016/j.envres.2011.01.023), hypothesized to affect [motility of sperm](https://www.jstor.org/stable/2061888) citing a single study of [only 56 patients](https://doi.org/10.1016/0028-2243(88)90140-2). That is, people aren't having less sex in the summer, just fewer pregnancies. 
 
 ## Germany and Austria ##
 
@@ -53,6 +54,8 @@ Cuba is a good example of a tropical pattern country, showing a very low springt
 
 ![Cuba.UNdata_20210419.png](https://github.com/wrf/birth_rate_by_month/blob/main/images/Cuba.UNdata_20210419.png)
 
+There was one study by [Leslie and Fry 1989](https://pubmed.ncbi.nlm.nih.gov/2750875/) of Turkana women in Kenya that had shown a very strong seasonality. They noted that this did mostly corresponded to conceptions after the rainy season, where food availability was highest (both for humans and their livestock), and most births during the rainy season.
+
 ## Year of the Dragon ##
 Like the Western Zodiac, the [Chinese Zodiac](https://en.wikipedia.org/wiki/Chinese_calendar_correspondence_table) has 12 symbols, each representing an animal. These are combined with 5 elements (wood, fire, earth, metal, and water), each spanning 2 years, to end up with a 60 year cycle of the 5 elements and 12 animals. 
 
@@ -66,7 +69,7 @@ Next year, 2024, year of the wood dragon, would then be expected to show this ef
 
 ![plot of births in Singapore](https://github.com/wrf/birth_rate_by_month/blob/main/images/Singapore.timeline.UNdata_20230630.png)
 
-![plot of births in Malaysia](https://github.com/wrf/birth_rate_by_month/blob/main/images/Malaysia.timeline.UNdata_20230630.png)
+![plot of births in Malaysia](https://github.com/wrf/birth_rate_by_month/blob/main/images/Malaysia.timeline.UNdata_20250419.png)
 
-### Notes ###
+
 
