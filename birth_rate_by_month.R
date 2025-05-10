@@ -359,22 +359,45 @@ ggplot(country_final_only, aes(x=match(Month,months),
 # P.W. LESLIE AND P.H. FRY (1989) Extreme Seasonality of Births Among Nomadic Turkana Pastoralists
 # https://pubmed.ncbi.nlm.nih.gov/2750875/
 # TABLE 1. Distributions of Ngisonyoka Turkana births and rainfall, by month
-leslie1989_text = "month	month_num	boy_births	girl_births	total	running_average	rainfall_mm
-January	1	9	9	18	15	11
-February	2	2	2	4	26	23
-March	3	25	31	56	39.7	42
-April	4	37	22	59	58	41
-May	5	31	28	59	58	40
-June	6	31	25	56	45.3	31
-July	7	13	8	21	41	33
-August	8	18	28	46	33.3	11
-September	9	22	11	33	37.7	23
-October	10	20	14	34	36.7	18
-November	11	18	25	43	33.3	19
-December	12	10	13	23	28	1
-sum	0	236	216	452	0	293"
+# TABLE 2. Observed and fitted monthlv orouortions o f conceutions and rainfall
+leslie1989_text = "month	month_num	boy_births	girl_births	total_births	births_running_average	rainfall_mm	conceptions_3mo_av	conceptions_fitted	rainfall_pct	rainfall_fitted
+December	0	10	13	23	28	1	8.3	8.1	0.3	2.9
+January	1	9	9	18	15	11	8.1	8.6	3.8	3.6
+February	2	2	2	4	26	23	7.4	7.5	7.8	7.8
+March	3	25	31	56	39.7	42	6.2	5.3	14.3	12.7
+April	4	37	22	59	58	41	3.3	4.1	14	15.3
+May	5	31	28	59	58	40	5.8	5.6	13.7	14.2
+June	6	31	25	56	45.3	31	8.8	9.1	10.6	10.9
+July	7	13	8	21	41	33	12.8	12.2	11.3	8
+August	8	18	28	46	33.3	11	12.8	12.8	3.8	7.1
+September	9	22	11	33	37.7	23	10	10.8	7.8	7.2
+October	10	20	14	34	36.7	18	9.1	8.5	6.1	6.4
+November	11	18	25	43	33.3	19	7.4	7.5	6.5	4.3
+December	12	10	13	23	28	1	8.3	8.1	0.3	2.9
+sum	0	236	216	452	452	293	100	100	100	100"
 leslie1989_data = read.table(text=leslie1989_text, header=TRUE, sep="\t")
-
-
+leslie1989_data.nosum = leslie1989_data[which(leslie1989_data$month!="sum"),]
+ggplot(leslie1989_data.nosum, aes(x=month_num, 
+                               y=total_births ) ) + 
+  theme(axis.text.y=element_text(size=13),
+        axis.title.y=element_text(size=16),
+        panel.background = element_rect( fill="#00000011" ),
+        panel.grid.major = element_line( color = "#00000044" ),
+        legend.position=c(1,0.8),
+        legend.justification = "right",
+        legend.title = element_text(size=16),
+        legend.key.size = unit(1, 'cm'),
+        plot.title = element_text(size=25)) +
+  coord_polar(start = 0, direction = 1) + 
+  scale_x_continuous(limits=c(0,12), breaks = seq(0,11,1),  labels = leslie1989_data.nosum$month[-1] ) +
+  scale_y_continuous(limits=c(0,60) ) +
+  scale_color_gradient(low="#00220b", high="#66e284") +
+  labs(x=NULL, y = "",
+       title="Turkana births", subtitle="of nomadic Turkana women in northwest Kenya",
+       caption="Data from Leslie and Fry (1989) Extreme Seasonality of Births Among Nomadic Turkana Pastoralists" ) +
+  geom_line( colour="#00220b", alpha=0.5, size=5, lineend = "round") +
+  annotate("polygon", x=leslie1989_data.nosum$month_num, y=leslie1989_data.nosum$rainfall_mm,
+           colour="#000b8888", fill="#000b88", alpha=0.5, size=2 ) +
+  annotate(geom="text", x=5, y=20, colour="#000b58", label="Rainfall", size=4 )
 
 #
